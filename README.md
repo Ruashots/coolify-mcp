@@ -4,7 +4,7 @@ A Model Context Protocol (MCP) server for the [Coolify](https://coolify.io) API.
 
 ## Features
 
-**75+ tools** covering the complete Coolify API:
+**70+ tools** covering the complete Coolify API:
 
 - **Applications** - Deploy from Git repos, Dockerfiles, Docker images, or Docker Compose
 - **Databases** - PostgreSQL, MySQL, MariaDB, MongoDB, Redis, ClickHouse, DragonFly, KeyDB
@@ -155,9 +155,6 @@ node /path/to/coolify-mcp/dist/index.js
 | Tool | Description |
 |------|-------------|
 | `coolify_list_github_apps` | List all GitHub Apps (get UUID for private repos) |
-| `coolify_get_github_app` | Get GitHub App by UUID |
-| `coolify_list_github_app_repositories` | List repositories for a GitHub App |
-| `coolify_list_github_app_branches` | List branches for a repository |
 
 ### Private Keys
 | Tool | Description |
