@@ -2,6 +2,27 @@
 
 A Model Context Protocol (MCP) server for the [Coolify](https://coolify.io) API. Manage your self-hosted PaaS infrastructure through AI assistants like Claude.
 
+## Quick Install
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Ruashots/coolify-mcp/master/install.sh | bash
+```
+
+This will:
+- Clone the repository to `~/.local/share/coolify-mcp`
+- Install dependencies and build
+- Prompt for your Coolify URL and API token
+- Configure Claude Code automatically
+
+**Other commands:**
+```bash
+# Reconfigure credentials
+~/.local/share/coolify-mcp/install.sh --reconfigure
+
+# Uninstall
+~/.local/share/coolify-mcp/install.sh --uninstall
+```
+
 ## Features
 
 **70+ tools** covering the complete Coolify API:
@@ -19,12 +40,13 @@ A Model Context Protocol (MCP) server for the [Coolify](https://coolify.io) API.
 - Node.js 18+
 - A running Coolify instance
 - Coolify API token
+- `jq` (for automatic Claude Code configuration)
 
-## Installation
+## Manual Installation
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-repo/coolify-mcp.git
+git clone https://github.com/Ruashots/coolify-mcp.git
 cd coolify-mcp
 
 # Install dependencies
