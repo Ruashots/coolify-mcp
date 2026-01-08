@@ -154,7 +154,8 @@ node /path/to/coolify-mcp/dist/index.js
 ### GitHub Apps
 | Tool | Description |
 |------|-------------|
-| `coolify_list_github_apps` | List all GitHub Apps (get UUID for private repos) |
+| `coolify_list_github_apps` | List all GitHub Apps (get UUID and ID for private repos) |
+| `coolify_list_github_app_repositories` | List repositories accessible by a GitHub App (use numeric `id`) |
 
 ### Private Keys
 | Tool | Description |

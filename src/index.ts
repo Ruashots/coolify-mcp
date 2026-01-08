@@ -323,6 +323,17 @@ const tools: Tool[] = [
     description: "List all GitHub Apps configured in Coolify (needed to get github_app_uuid for private repo deployments)",
     inputSchema: { type: "object", properties: {}, required: [] },
   },
+  {
+    name: "coolify_list_github_app_repositories",
+    description: "List all repositories accessible by a GitHub App. Use the numeric 'id' from coolify_list_github_apps, not the uuid.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        id: { type: "number", description: "GitHub App numeric ID (from coolify_list_github_apps response)" },
+      },
+      required: ["id"],
+    },
+  },
 
   // -------------------------------------------------------------------------
   // Private Keys (Security)
@@ -1240,6 +1251,9 @@ async function handleToolCall(name: string, args: Record<string, any>): Promise<
     // GitHub Apps
     case "coolify_list_github_apps":
       result = await coolifyRequest("/github-apps");
+      break;
+    case "coolify_list_github_app_repositories":
+      result = await coolifyRequest(`/github-apps/${args.id}/repositories`);
       break;
 
     // Private Keys
