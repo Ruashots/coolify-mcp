@@ -12,6 +12,13 @@ NC='\033[0m' # No Color
 INSTALL_DIR="${HOME}/.local/share/coolify-mcp"
 CLAUDE_SETTINGS="${HOME}/.claude.json"
 
+# Handle piped input (curl | bash) - use /dev/tty for prompts
+if [ -t 0 ]; then
+    INPUT_DEVICE="/dev/stdin"
+else
+    INPUT_DEVICE="/dev/tty"
+fi
+
 print_banner() {
     echo -e "${BLUE}"
     echo "╔═══════════════════════════════════════╗"
@@ -92,10 +99,10 @@ configure_credentials() {
 
     # Prompt for Coolify URL
     if [ -n "$existing_url" ]; then
-        read -p "Coolify URL [$existing_url]: " COOLIFY_URL
+        read -p "Coolify URL [$existing_url]: " COOLIFY_URL < "$INPUT_DEVICE"
         COOLIFY_URL="${COOLIFY_URL:-$existing_url}"
     else
-        read -p "Coolify URL (e.g., http://192.168.1.100:8000): " COOLIFY_URL
+        read -p "Coolify URL (e.g., http://192.168.1.100:8000): " COOLIFY_URL < "$INPUT_DEVICE"
     fi
 
     if [ -z "$COOLIFY_URL" ]; then
@@ -105,10 +112,10 @@ configure_credentials() {
 
     # Prompt for API token
     if [ -n "$existing_token" ]; then
-        read -p "API Token [keep existing]: " COOLIFY_TOKEN
+        read -p "API Token [keep existing]: " COOLIFY_TOKEN < "$INPUT_DEVICE"
         COOLIFY_TOKEN="${COOLIFY_TOKEN:-$existing_token}"
     else
-        read -p "API Token (from Coolify > Keys & Tokens > API tokens): " COOLIFY_TOKEN
+        read -p "API Token (from Coolify > Keys & Tokens > API tokens): " COOLIFY_TOKEN < "$INPUT_DEVICE"
     fi
 
     if [ -z "$COOLIFY_TOKEN" ]; then
