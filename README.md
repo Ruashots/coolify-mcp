@@ -151,6 +151,14 @@ node /path/to/coolify-mcp/dist/index.js
 | `coolify_get_server_resources` | Get deployed resources |
 | `coolify_get_server_domains` | Get domain mappings |
 
+### GitHub Apps
+| Tool | Description |
+|------|-------------|
+| `coolify_list_github_apps` | List all GitHub Apps (get UUID for private repos) |
+| `coolify_get_github_app` | Get GitHub App by UUID |
+| `coolify_list_github_app_repositories` | List repositories for a GitHub App |
+| `coolify_list_github_app_branches` | List branches for a repository |
+
 ### Private Keys
 | Tool | Description |
 |------|-------------|

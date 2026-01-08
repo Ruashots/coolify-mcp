@@ -316,6 +316,50 @@ const tools: Tool[] = [
   },
 
   // -------------------------------------------------------------------------
+  // GitHub Apps (Sources)
+  // -------------------------------------------------------------------------
+  {
+    name: "coolify_list_github_apps",
+    description: "List all GitHub Apps configured in Coolify (needed to get github_app_uuid for private repo deployments)",
+    inputSchema: { type: "object", properties: {}, required: [] },
+  },
+  {
+    name: "coolify_get_github_app",
+    description: "Get a specific GitHub App by UUID",
+    inputSchema: {
+      type: "object",
+      properties: {
+        uuid: { type: "string", description: "GitHub App UUID" },
+      },
+      required: ["uuid"],
+    },
+  },
+  {
+    name: "coolify_list_github_app_repositories",
+    description: "List all repositories accessible by a GitHub App",
+    inputSchema: {
+      type: "object",
+      properties: {
+        uuid: { type: "string", description: "GitHub App UUID" },
+      },
+      required: ["uuid"],
+    },
+  },
+  {
+    name: "coolify_list_github_app_branches",
+    description: "List all branches for a repository accessible by a GitHub App",
+    inputSchema: {
+      type: "object",
+      properties: {
+        uuid: { type: "string", description: "GitHub App UUID" },
+        owner: { type: "string", description: "Repository owner (username or organization)" },
+        repo: { type: "string", description: "Repository name" },
+      },
+      required: ["uuid", "owner", "repo"],
+    },
+  },
+
+  // -------------------------------------------------------------------------
   // Private Keys (Security)
   // -------------------------------------------------------------------------
   {
@@ -1226,6 +1270,20 @@ async function handleToolCall(name: string, args: Record<string, any>): Promise<
       break;
     case "coolify_get_server_domains":
       result = await coolifyRequest(`/servers/${args.uuid}/domains`);
+      break;
+
+    // GitHub Apps
+    case "coolify_list_github_apps":
+      result = await coolifyRequest("/github-apps");
+      break;
+    case "coolify_get_github_app":
+      result = await coolifyRequest(`/github-apps/${args.uuid}`);
+      break;
+    case "coolify_list_github_app_repositories":
+      result = await coolifyRequest(`/github-apps/${args.uuid}/repositories`);
+      break;
+    case "coolify_list_github_app_branches":
+      result = await coolifyRequest(`/github-apps/${args.uuid}/repositories/${args.owner}/${args.repo}/branches`);
       break;
 
     // Private Keys
