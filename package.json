@@ -1,0 +1,52 @@
+{
+  "name": "coolify-mcp",
+  "version": "1.0.0",
+  "description": "A comprehensive Model Context Protocol (MCP) server for the Coolify API - manage applications, services, databases, servers, and deployments",
+  "main": "dist/index.js",
+  "type": "module",
+  "bin": {
+    "coolify-mcp": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts",
+    "watch": "tsc --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "coolify",
+    "devops",
+    "paas",
+    "deployment",
+    "docker",
+    "self-hosted",
+    "infrastructure",
+    "ai",
+    "claude",
+    "anthropic"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/coolify-mcp"
+  }
+}
